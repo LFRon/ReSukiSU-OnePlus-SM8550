@@ -1,0 +1,19 @@
+From 836c16fbbd981fcf4f6b39faad2e7e7be13d5434 Fri Dec 12 00:00:00 2001
+From: LFRon <ronforever@outlook.com>
+Date: Sat, 13 Dec 2025 09:35:45 +0800
+Subject: Remove unnecessary depends for compiler "-O3" build
+
+---
+diff --git a/init/Kconfig b/init/Kconfig
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -1399,7 +1399,6 @@
+ 
+ config CC_OPTIMIZE_FOR_PERFORMANCE_O3
+ 	bool "Optimize more for performance (-O3)"
+-	depends on ARC
+ 	help
+ 	  Choosing this option will pass "-O3" to your compiler to optimize
+ 	  the kernel yet more for performance.
+--
+2.47.1

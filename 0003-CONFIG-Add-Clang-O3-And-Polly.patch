@@ -1,0 +1,15 @@
+From: LFRon <ronforever@outlook.com>
+Date: Fri, 12 Dec 2025 14:32:05 +0800
+--- a/arch/arm64/configs/vendor/kalama_GKI.config
++++ b/arch/arm64/configs/vendor/kalama_GKI.config
+@@ -570,3 +570,7 @@
+ # CONFIG_WFX is not set
+ # CONFIG_WILC1000_SDIO is not set
+ # CONFIG_WILC1000_SPI is not set
++# CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE is not set
++CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3=y
++CONFIG_POLLY_CLANG=y
++
+
+--
+2.52.0
