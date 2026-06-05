@@ -1,0 +1,34 @@
+From b51ece798d18a54679242a57e95fa9c35e7b6036 Mon Sep 17 00:00:00 2001
+From: LFRon <ronforever@outlook.com>
+Date: Sat, 10 Jan 2026 20:04:05 +0800
+Subject: [PATCH] Fix compilation on Android LLVM 22 (Clang-r584948)
+
+Change-Id: If90a2353f2f2279fb70c2dd43b62d7ec1b74f28a
+---
+
+diff --git a/drivers/input/misc/qcom-hv-haptics.c b/drivers/input/misc/qcom-hv-haptics.c
+index c9e2fd5..a7237ae 100644
+--- a/drivers/input/misc/qcom-hv-haptics.c
++++ b/drivers/input/misc/qcom-hv-haptics.c
+@@ -1168,7 +1168,7 @@ static int haptics_get_status_data(struct haptics_chip *chip,
+ 		"RNAT_RCAL_INT",
+ 		"BRAKE_CAL_SCALAR",
+ 	};
+-	const char *name;
++	const char *name = NULL;
+ 
+ 	mod_sel_val[0] = sel & 0xff;
+ 	mod_sel_val[1] = (sel >> 8) & 0xff;
+diff --git a/drivers/thermal/qcom/cpu_voltage_cooling.c b/drivers/thermal/qcom/cpu_voltage_cooling.c
+index 6410730..95d26a3 100644
+--- a/drivers/thermal/qcom/cpu_voltage_cooling.c
++++ b/drivers/thermal/qcom/cpu_voltage_cooling.c
+@@ -178,7 +178,7 @@ static struct cc_limits_data *opp_init(int *cpus)
+ {
+ 	int cpu1, cpu2;
+ 	struct device *cpu1_dev, *cpu2_dev;
+-	struct limits_freq_table *cpu1_freq_table, *cpu2_freq_table;
++	struct limits_freq_table *cpu1_freq_table = NULL, *cpu2_freq_table = NULL;
+ 	struct limits_freq_table *cpu_freq_table[CPU_MAP_CT];
+ 	int table_ct[CPU_MAP_CT], ret = 0;
+ 	struct cc_limits_data *cc_cdev = NULL;
